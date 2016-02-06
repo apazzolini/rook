@@ -26,7 +26,7 @@
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel --presets es2015,stage-0,react --plugins transform-runtime src/ --out-dir lib/",
-    "dev": "./bin/local-dev.sh",
+    "dev": "./dev-scripts/copy-to-app.sh",
     "lint": "eslint -c .eslintrc src bin config",
     "prepublish": "npm run compile"
   },
@@ -114,7 +114,6 @@
     "npm": ">=3.3.12"
   },
   "bin": {
-    "rook-dev": "./bin/local-dev.sh",
     "rook-watch": "./bin/shims/webpack-dev-server.js",
     "rook-server": "./bin/shims/server.js",
     "rook-build": "./bin/shims/build.js"

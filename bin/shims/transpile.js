@@ -1,4 +1,4 @@
-//  enable runtime transpilation to use ES6/7 in node
+// Enable runtime transpilation to use ES6/7 in node
 
 /* eslint-disable */
 var fs = require('fs');
@@ -10,7 +10,7 @@ var config;
 try {
   config = JSON.parse(babelrc);
 } catch (err) {
-  console.error('==>     ERROR: Error parsing your babelrc');
+  console.error('==> ERROR: Error parsing your babelrc');
   console.error(err);
 }
 /* eslint-enable */
