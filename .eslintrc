@@ -1,0 +1,35 @@
+{
+  "extends": "eslint-config-rackt",
+  "env": {
+    mocha: true
+  },
+  "ecmaFeatures": {
+    "jsx": false
+  },
+  "rules": {
+    "babel/object-curly-spacing": [2, "never"],
+    "object-curly-spacing": 0,
+    "react/jsx-uses-react": [2, {"pragma": "React"}],
+    "array-bracket-spacing": [2, "never"],
+    "new-cap": 0,
+    "no-alert": 0,
+    "no-console": 0,
+    "no-else-return": 0,
+    "no-unused-vars": [2, {"args": "none"}],
+    "semi": [2, "always"]
+  },
+  "plugins": [
+    "react",
+    "babel"
+  ],
+  "globals": {
+    "__DEVELOPMENT__": true,
+    "__CLIENT__": true,
+    "__SERVER__": true,
+    "__LOGGER__": false,
+    "__DISABLE_SSR__": true,
+    "__DEVTOOLS__": true,
+    "__DEVTOOLS_IS_VISIBLE__": true,
+    "webpackIsomorphicTools": true
+  }
+}
