@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const Express = require('express');
 const webpack = require('webpack');
-const userConfig = require('./user-config');
 
-const config = require('./merge-configs')(userConfig);
+global.__VERBOSE_OVERRIDE__ = true;
+const config = require('../config/rook');
 
 const webpackConfig = config.webpack.config;
 const compiler = webpack(webpackConfig);

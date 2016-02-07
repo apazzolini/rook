@@ -5,7 +5,6 @@ import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 import Boom from 'boom';
 
 import createStore from '../redux/createStore';
-import configure from '../configure';
 import html from './html';
 import getTools from './tools';
 
@@ -18,11 +17,11 @@ global.__SERVER__ = true;
 global.__DISABLE_SSR__ = false;  // <----- DISABLES SERVER SIDE RENDERING FOR ERROR DEBUGGING
 global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
 
-export default (projectConfig, projectToolsConfig) => {
+export default () => {
   const projectRoot = process.cwd();
   const sourceRoot = `${projectRoot}/src`;
-  const tools = getTools(projectConfig, projectToolsConfig);
-  const config = configure(projectConfig);
+  const tools = getTools();
+  const config = require('../../config/rook');
   const getRoutes = require(path.resolve(config.routes)).default;
   const rootComponent = require(config.rootComponent ? path.resolve(config.rootComponent) : '../helpers/rootComponent');
   const pretty = new PrettyError();

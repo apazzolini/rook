@@ -3,15 +3,6 @@ const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 // see this link for more info on what all of this means
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 module.exports = {
-
-  // when adding "js" extension to asset types
-  // and then enabling debug mode, it may cause a weird error:
-  //
-  // [0] npm run start-prod exited with code 1
-  // Sending SIGTERM to other processes..
-  //
-  // debug: true,
-
   assets: {
     images: {
       extensions: [
@@ -40,7 +31,7 @@ module.exports = {
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
     style_modules: {
-      extensions: [ 'css', 'less', 'scss' ],
+      extensions: [ 'css', 'scss' ],
       filter: (module, regex, options, log) => {
         if (options.development) {
           // in development mode there's webpack "style-loader",

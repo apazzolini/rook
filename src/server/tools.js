@@ -1,9 +1,15 @@
 import WebpackIsomorphicTools from 'webpack-isomorphic-tools';
-import configure from '../configure';
 
-export default (projectConfig, projectToolsConfig) => {
-  const config = configure(projectConfig);
-  const toolsConfig = projectToolsConfig || require('../../config/webpack-isomorphic-tools.js');
+export default () => {
+  const config = require('../../config/rook');
+
+  // Gather tools config
+  let toolsConfig = require('../../config/defaults/webpack-isomorphic-tools.js');
+  if (config.toolsConfigPath !== null) {
+    const userToolsConfig = require(path.resolve(config.toolsConfigPath));
+    toolsConfig = lodash.merge(baseToolsConfig, userToolsConfig);
+  }
+
   const rootDir = config.webpack.config.context;
   const tools = new WebpackIsomorphicTools(toolsConfig);
   tools

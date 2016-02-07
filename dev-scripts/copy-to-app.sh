@@ -20,11 +20,7 @@ fi
 # lifted from http://stackoverflow.com/a/13864829/583755
 compile() {
   echo
-  echo Files have changed, updating rook...
-  echo
-  echo Source: $ROOT_DIR
-  echo Destination: $PROJECT_PATH/node_modules/rook
-  echo
+  echo Files have changed, updating from $ROOT_DIR to $PROJECT_PATH/node_modules/rook
   cp -a $ROOT_DIR/bin/* $PROJECT_PATH/node_modules/rook/bin/ > /dev/null
   cp -a $ROOT_DIR/config/* $PROJECT_PATH/node_modules/rook/config/ > /dev/null
   cp $ROOT_DIR/.babelrc $PROJECT_PATH/node_modules/rook

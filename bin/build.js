@@ -3,8 +3,7 @@ process.env.NODE_ENV = 'production';
 const fs = require('fs');
 const webpack = require('webpack');
 
-const userConfig = require('./user-config');
-const config = require('./merge-configs')(userConfig);
+const config = require('../config/rook');
 
 const buildStats = false;
 const outputStatsPath = './webpack-stats.json';
@@ -22,7 +21,7 @@ webpack(webpackConfig, (err, stats) => {
     version: true,
     timings: true,
     assets: true,
-    chunks: true,
+    chunks: false,
     colors: true
   };
 
@@ -32,6 +31,7 @@ webpack(webpackConfig, (err, stats) => {
   if (jsonStats.errors.length > 0) {
     console.log('Webpack had errors.');
     options.errors = true;
+    throw new Error('Build failed');
   }
   if (jsonStats.warnings.length > 0) {
     console.log('Webpack had warnings.');

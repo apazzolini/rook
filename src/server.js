@@ -5,12 +5,11 @@ import PrettyError from 'pretty-error';
 import fs from 'fs';
 import path from 'path';
 
-import configure from './configure';
 import buildApiRoutes from './server/hapi/routes';
 import registerExtensions from './server/hapi/extensions';
 
-export default (projectConfig) => {
-  const config = configure(projectConfig);
+export default () => {
+  const config = require('../config/rook');
 
   const pretty = new PrettyError();
   const server = new Server({

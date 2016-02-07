@@ -1,16 +1,11 @@
-// require('babel/polyfill');
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
-
-// begin shared setup
 const path = require('path');
 const webpack = require('webpack');
 
-// begin dev setup
+// Dev server setup
 const host = (process.env.HOST || 'localhost');
 const port = parseInt(process.env.PORT, 10) + 1 || 3001;
 
-// begin prod setup
+// Production usage
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const vendor = [
@@ -20,7 +15,6 @@ const vendor = [
   'react-router',
   'react-redux',
   'redux',
-  'redux-logger',
   'react-router-redux'
 ];
 
@@ -29,12 +23,11 @@ module.exports = {
     context: path.resolve(__dirname, '..'),
     entry: {
       main: [
-        path.resolve(__dirname, '..', 'lib/client.js')
+        path.resolve(__dirname, '..', '..', 'lib/client.js')
       ]
     },
     module: {
       loaders: [
-        // { test: /\.jsx?$/, exclude: /node_modules/, loaders: jsLoaders }, // now prepended in merge-configs and merge-babel-config
         { test: /\.json$/, loader: 'json-loader' },
         { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
         { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
@@ -59,7 +52,10 @@ module.exports = {
       ]
     },
     postcss: function() {
-      return [autoprefixer, precss];
+      return [
+        require('autoprefixer'), 
+        require('precss')
+      ];
     }
   },
   development: {
