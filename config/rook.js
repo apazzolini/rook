@@ -5,7 +5,6 @@ const path = require('path');
 const lodash = require('lodash');
 const mergeWebpack = require('webpack-config-merger');
 const webpack = require('webpack');
-const inspect = require('../lib/helpers/inspect');
 const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 
 const projectRoot = process.cwd();
@@ -40,12 +39,12 @@ function getMergedBabelConfig(config) {
       transforms: [
         {
           transform: 'react-transform-hmr',
-          imports: [ 'react' ],
-          locals: [ 'module' ]
+          imports: ['react'],
+          locals: ['module']
         },
         {
           transform: 'react-transform-catch-errors',
-          imports: [ 'react', 'redbox-react' ]
+          imports: ['react', 'redbox-react']
         }
       ]
     }
@@ -55,7 +54,7 @@ function getMergedBabelConfig(config) {
   babelConfig.cacheDirectory = true;
 
   const babelLoader = 'babel-loader?' + JSON.stringify(babelConfig);
-  const jsLoaders = [ babelLoader ];
+  const jsLoaders = [babelLoader];
 
   return jsLoaders;
 }
@@ -84,7 +83,7 @@ function getMergedWebpackConfig(rookConfig) {
   let combinedToolsConfig = require('./defaults/webpack-isomorphic-tools.js');
   if (rookConfig.toolsConfigPath !== null) {
     const userToolsConfig = require(path.resolve(rookConfig.toolsConfigPath));
-    combinedToolsConfig = lodash.merge(baseToolsConfig, userToolsConfig);
+    combinedToolsConfig = lodash.merge(combinedToolsConfig, userToolsConfig);
   }
   
   // Don't pollute the project directory with the assets json file

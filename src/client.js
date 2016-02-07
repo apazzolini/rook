@@ -10,7 +10,7 @@ import fetchData from './routing/fetchComponentData';
 // These dependencies are resolved via webpack aliases
 import getRoutes from 'routes';
 import middleware from 'middleware';
-import {createForClient as createRootComponentForClient} from 'rootComponent';
+import { createForClient as createRootComponentForClient } from 'rootComponent';
 
 // TODO: Fix this, super hacky. https://github.com/rackt/scroll-behavior/issues/28
 const scrollHistory = useScroll(() => history)(); 
@@ -22,8 +22,8 @@ const routes = getRoutes(store);
 
 let lastMatchedLocBefore = location.pathname + location.search + location.hash;
 
-// FIXME: Hack
-import {routeActions} from 'react-router-redux';
+// FIXME: Temporary hack to ensure initial click fires in production
+import { routeActions } from 'react-router-redux';
 store.dispatch(routeActions.push(lastMatchedLocBefore));
 
 history.listenBefore((location, callback) => {
@@ -33,9 +33,9 @@ history.listenBefore((location, callback) => {
   }
 
   // TODO: Update to new react-router 2.0 RouterContext 
-  match({routes, location: loc}, (err, redirectLocation, nextState) => {
+  match({ routes, location: loc }, (err, redirectLocation, nextState) => {
     if (!err && nextState) {
-    lastMatchedLocBefore = loc;
+      lastMatchedLocBefore = loc;
 
       fetchData(nextState.components, store.getState, store.dispatch, location, nextState.params)
       .then(() => {
@@ -55,10 +55,10 @@ history.listenBefore((location, callback) => {
 let devComponent;
 if (__DEVTOOLS__) {
   const devtools = require('./client/devtools');
-  const devComponent = devtools.render();
+  devComponent = devtools.render();
 }
 
-const root = createRootComponentForClient(store, {routes, history});
+const root = createRootComponentForClient(store, { routes, history });
 
 ReactDOM.render(root, dest);
 
@@ -72,7 +72,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 if (devComponent) {
-  const rootWithDevTools = createRootComponentForClient(store, {routes, history, devComponent})
+  const rootWithDevTools = createRootComponentForClient(store, { routes, history, devComponent });
   if (rootWithDevTools) {
     ReactDOM.render(rootWithDevTools, dest);
   }

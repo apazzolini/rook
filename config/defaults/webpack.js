@@ -43,7 +43,7 @@ module.exports = {
         'src',
         'node_modules'
       ],
-      extensions: [ '', '.json', '.js', '.jsx' ]
+      extensions: ['', '.json', '.js', '.jsx']
     },
     resolveLoader: {
       modulesDirectories: [
@@ -51,7 +51,7 @@ module.exports = {
         'node_modules'
       ]
     },
-    postcss: function() {
+    postcss: function () {
       return [
         require('autoprefixer'), 
         require('precss')
@@ -62,7 +62,7 @@ module.exports = {
     devtool: 'inline-source-map',
     entry: {
       main: [
-        'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',
+        'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr'
       ]
     },
     output: {
@@ -127,7 +127,7 @@ module.exports = {
         }
       }),
       new webpack.optimize.CommonsChunkPlugin({
-        names: [ 'vendor' ],
+        names: ['vendor'],
         minChunks: Infinity
       })
     ]

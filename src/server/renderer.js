@@ -1,6 +1,5 @@
 import path from 'path';
 import { match } from 'react-router';
-import PrettyError from 'pretty-error';
 import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 import Boom from 'boom';
 
@@ -24,7 +23,6 @@ export default () => {
   const config = require('../../config/rook');
   const getRoutes = require(path.resolve(config.routes)).default;
   const rootComponent = require(config.rootComponent ? path.resolve(config.rootComponent) : '../helpers/rootComponent');
-  const pretty = new PrettyError();
 
   return (request, reply) => {
     if (request.path.indexOf('/api/') === 0) {

@@ -1,3 +1,5 @@
+import lodash from 'lodash';
+import path from 'path';
 import WebpackIsomorphicTools from 'webpack-isomorphic-tools';
 
 export default () => {
@@ -7,7 +9,7 @@ export default () => {
   let toolsConfig = require('../../config/defaults/webpack-isomorphic-tools.js');
   if (config.toolsConfigPath !== null) {
     const userToolsConfig = require(path.resolve(config.toolsConfigPath));
-    toolsConfig = lodash.merge(baseToolsConfig, userToolsConfig);
+    toolsConfig = lodash.merge(toolsConfig, userToolsConfig);
   }
 
   const rootDir = config.webpack.config.context;

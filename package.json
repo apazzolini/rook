@@ -27,7 +27,7 @@
   "scripts": {
     "compile": "babel --presets es2015,stage-0,react --plugins transform-runtime src/ --out-dir lib/",
     "dev": "./dev-scripts/copy-to-app.sh",
-    "lint": "eslint -c .eslintrc src bin config",
+    "lint": "./node_modules/.bin/eslint -c .eslintrc src bin config",
     "prepublish": "npm run compile"
   },
   "dependencies": {

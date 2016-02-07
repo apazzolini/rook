@@ -1,5 +1,4 @@
-import {Server} from 'hapi';
-import Boom from 'boom';
+import { Server } from 'hapi';
 import inert from 'inert';
 import PrettyError from 'pretty-error';
 import fs from 'fs';
@@ -19,7 +18,7 @@ export default () => {
       }
     }
   });
-  server.connection({port: config.server.port});
+  server.connection({ port: config.server.port });
 
   registerExtensions(server, config);
 
@@ -70,5 +69,5 @@ export default () => {
     });
   });
 
-  return server
+  return server;
 };

@@ -11,9 +11,9 @@
  * This middleware should come after thunk handling middlewares.
  */
 export default function (api) {
-  return ({getState, dispatch}) => next => action => {
+  return ({ getState, dispatch }) => next => action => {
     // We only handle actions that have a `apiRequest` field.
-    const {apiRequest, type, ...rest} = action;
+    const { apiRequest, type, ...rest } = action;
     if (!apiRequest) {
       return next(action);
     }
@@ -24,19 +24,19 @@ export default function (api) {
     const FAIL = `${type}Fail`;
 
     // Immediately dispatch the REQUEST action.
-    next({...rest, type: REQUEST});
+    next({ ...rest, type: REQUEST });
 
     // Execute the API request and dispatch the OK or FAIL action type
     return apiRequest(api).then(
       (result) => {
         if (result.error) {
-          return next({...rest, error: result.error, type: FAIL});
+          return next({ ...rest, error: result.error, type: FAIL });
         }
 
-        return next({...rest, result, type: OK});
+        return next({ ...rest, result, type: OK });
       },
       (error) => {
-        return next({...rest, error, type: FAIL});
+        return next({ ...rest, error, type: FAIL });
       }
     );
   };

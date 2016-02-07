@@ -7,7 +7,7 @@
     "jsx": false
   },
   "rules": {
-    "babel/object-curly-spacing": [2, "never"],
+    "babel/object-curly-spacing": [2, "always"],
     "object-curly-spacing": 0,
     "react/jsx-uses-react": [2, {"pragma": "React"}],
     "array-bracket-spacing": [2, "never"],

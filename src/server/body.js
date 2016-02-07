@@ -8,7 +8,7 @@ export default class Body extends Component {
     assets: PropTypes.object,
     component: PropTypes.node,
     headers: PropTypes.object,
-    store: PropTypes.object,
+    store: PropTypes.object
   };
 
   render() {

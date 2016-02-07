@@ -1,6 +1,6 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import {Router, RouterContext} from 'react-router';
+import { Provider } from 'react-redux';
+import { Router, RouterContext } from 'react-router';
 
 export function createForServer(store, renderProps) {
   return (
@@ -12,7 +12,7 @@ export function createForServer(store, renderProps) {
   );
 }
 
-export function createForClient(store, {routes, history, devComponent}) {
+export function createForClient(store, { routes, history, devComponent }) {
   const component = (
     <Router history={history}>
       {routes}

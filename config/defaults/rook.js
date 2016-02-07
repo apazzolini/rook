@@ -1,5 +1,4 @@
 const projectRoot = process.cwd();
-const sourceRoot = `${projectRoot}/src`;
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -15,7 +14,7 @@ module.exports = {
     testPort: 4000,
 
     // The static resources directory (served by Hapi straight from the filesystem)
-    staticPath: projectRoot + '/static',
+    staticPath: projectRoot + '/static'
   },
 
   globals: {

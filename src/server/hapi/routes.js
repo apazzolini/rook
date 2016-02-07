@@ -1,5 +1,4 @@
 import glob from 'glob';
-import path from 'path';
 import Boom from 'boom';
 
 /**
@@ -30,10 +29,8 @@ export default (config) => {
             reply(response);
           }
         } catch (e) {
-          if (!(e instanceof Error)) {
-            e = new Error(e);
-          }
-          reply(Boom.wrap(e));
+          const errObj = (e instanceof Error) ? e : new Error(e);
+          reply(Boom.wrap(errObj));
         }
       };
     };

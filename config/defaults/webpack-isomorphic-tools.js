@@ -23,7 +23,7 @@ module.exports = {
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
     videos: {
-      extensions: [ 'webm', 'mp4' ],
+      extensions: ['webm', 'mp4'],
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
     svg: {
@@ -31,7 +31,7 @@ module.exports = {
       parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     },
     style_modules: {
-      extensions: [ 'css', 'scss' ],
+      extensions: ['css', 'scss'],
       filter: (module, regex, options, log) => {
         if (options.development) {
           // in development mode there's webpack "style-loader",

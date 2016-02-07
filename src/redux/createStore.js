@@ -1,12 +1,12 @@
 import createLogger from 'redux-logger';
-import {syncHistory} from 'react-router-redux';
+import { syncHistory } from 'react-router-redux';
 import thunk from 'redux-thunk';
-import {applyMiddleware, createStore} from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 
 import Immutable from 'immutable';
-import {createReducer as createImmutableReducer} from 'redux-immutablejs';
-import {combineReducers} from 'redux';
-import {routeReducer} from 'react-router-redux';
+import { createReducer as createImmutableReducer } from 'redux-immutablejs';
+import { combineReducers } from 'redux';
+import { routeReducer } from 'react-router-redux';
 
 import apiRequestMiddleware from './middleware/ApiRequest/apiRequest';
 
