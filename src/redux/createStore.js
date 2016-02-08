@@ -9,6 +9,7 @@ import { combineReducers } from 'redux';
 import { routeReducer } from 'react-router-redux';
 
 import apiRequestMiddleware from './middleware/ApiRequest/apiRequest';
+import * as apiLoadingReducer from './modules/api';
 
 // explicit path required for HMR to function. see #7
 import reducers from '../../../../src/redux/modules';
@@ -19,7 +20,8 @@ export function createReducer(reducer) {
 
 function createRootReducer(reducers) {
   const rootReducer = {
-    routing: routeReducer
+    routing: routeReducer,
+    apiLoading: createReducer(apiLoadingReducer)
   };
 
   for (let [k, v] of Object.entries(reducers)) {

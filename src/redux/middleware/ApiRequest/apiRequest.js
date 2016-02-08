@@ -26,9 +26,13 @@ export default function (api) {
     // Immediately dispatch the REQUEST action.
     next({ ...rest, type: REQUEST });
 
+    // Dispatch the API_LOADING_START action
+    next({ type: '@@rook/apiLoadingStart' });
+
     // Execute the API request and dispatch the OK or FAIL action type
     return apiRequest(api).then(
       (result) => {
+        next({ type: '@@rook/apiLoadingFinish' });
         if (result.error) {
           return next({ ...rest, error: result.error, type: FAIL });
         }
@@ -36,6 +40,7 @@ export default function (api) {
         return next({ ...rest, result, type: OK });
       },
       (error) => {
+        next({ type: '@@rook/apiLoadingFinish' });
         return next({ ...rest, error, type: FAIL });
       }
     );

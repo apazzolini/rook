@@ -25,18 +25,19 @@ webpack(webpackConfig, (err, stats) => {
     colors: true
   };
 
-  console.log('Webpack compile was successful.');
 
   const jsonStats = stats.toJson();
   if (jsonStats.errors.length > 0) {
     console.log('Webpack had errors.');
     options.errors = true;
-    throw new Error('Build failed');
+    // TODO: Halt the build here
   }
   if (jsonStats.warnings.length > 0) {
     console.log('Webpack had warnings.');
     options.warnings = true;
   }
+
+  console.log('Webpack compile was successful.');
 
   console.log(stats.toString(options));
 
