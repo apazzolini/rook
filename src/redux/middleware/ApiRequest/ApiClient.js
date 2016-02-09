@@ -25,7 +25,7 @@ export default class ApiClient {
     const options = {
       ...this.defaultOptions
     };
-
+    
     return this.performFetch(path, options);
   }
 
@@ -52,9 +52,7 @@ export default class ApiClient {
 
   performFetch(path, options) {
     const url = this.formatUrl(path);
-    return fetch(url, options).then((data) => {
-      return data.json();
-    });
+    return fetch(url, options).then(data => data.json());
   }
 
   formatUrl(path) {

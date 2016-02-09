@@ -32,15 +32,16 @@ export default function (api) {
     // Execute the API request and dispatch the OK or FAIL action type
     return apiRequest(api).then(
       (result) => {
-        next({ type: '@@rook/apiLoadingFinish' });
         if (result.error) {
+          next({ type: '@@rook/apiLoadingFinish', loadError: result.error });
           return next({ ...rest, error: result.error, type: FAIL });
         }
 
+        next({ type: '@@rook/apiLoadingFinish' });
         return next({ ...rest, result, type: OK });
       },
       (error) => {
-        next({ type: '@@rook/apiLoadingFinish' });
+        next({ type: '@@rook/apiLoadingFinish', loadError: error });
         return next({ ...rest, error, type: FAIL });
       }
     );
