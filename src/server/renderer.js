@@ -65,9 +65,15 @@ export default () => {
               store.getState, store.dispatch,
               renderProps.location,
               renderProps.params
-            ).then(() => {
+            ).then((action) => {
+              let httpStatus;
+              if (action.length && action[0].statusCode) {
+                httpStatus = action[0].statusCode;
+              } else {
+                httpStatus = getRouteHttpStatus(renderProps.routes) || 200;
+              }
+
               const component = rootComponent.createForServer(store, renderProps);
-              const httpStatus = getRouteHttpStatus(renderProps.routes) || 200;
               reply(html(config, tools.assets(), store, null, component)).code(httpStatus);
             }).catch((e) => {
               reply(Boom.wrap(e));

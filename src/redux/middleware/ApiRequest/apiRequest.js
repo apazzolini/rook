@@ -34,7 +34,7 @@ export default function (api) {
       (result) => {
         if (result.error) {
           next({ type: '@@rook/apiLoadingFinish', loadError: result.error });
-          return next({ ...rest, error: result.error, type: FAIL });
+          return next({ ...rest, ...result, type: FAIL });
         }
 
         next({ type: '@@rook/apiLoadingFinish' });
