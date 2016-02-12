@@ -47,7 +47,6 @@
     "boom": "^3.0.0",
     "chai": "3.4.1",
     "chai-immutable": "^1.5.3",
-    "compression": "1.6.1",
     "config": "^1.17.1",
     "css-loader": "0.23.1",
     "eslint": "1.10.3",
