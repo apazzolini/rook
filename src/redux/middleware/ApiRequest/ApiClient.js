@@ -21,24 +21,28 @@ export default class ApiClient {
     }
   }
 
-  get(path) {
-    const options = {
-      ...this.defaultOptions
-    };
-    
-    return this.performFetch(path, options);
-  }
-
-  post(path, data) {
+  performRequest(method, path, data) {
     const options = {
       ...this.defaultOptions,
-      method: 'post',
+      method,
       body: JSON.stringify(data)
     };
     options.headers['Accept'] = 'application/json'; // eslint-disable-line dot-notation
     options.headers['Content-Type'] = 'application/json';
 
     return this.performFetch(path, options);
+  }
+
+  get(path) {
+    const options = {
+      ...this.defaultOptions
+    };
+
+    return this.performFetch(path, options);
+  }
+
+  post(path, data) {
+    this.performRequest('post', path, data);
   }
 
   delete(path) {
@@ -48,6 +52,14 @@ export default class ApiClient {
     };
 
     return this.performFetch(path, options);
+  }
+
+  put(path, data) {
+    this.performRequest('put', path, data);
+  }
+
+  patch(path, data) {
+    this.performRequest('patch', path, data);
   }
 
   performFetch(path, options) {
