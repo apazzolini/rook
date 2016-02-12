@@ -57,6 +57,13 @@ export default (config) => {
           }
         };
 
+        if (route.config) {
+          preparedRoute.config = {
+            ...preparedRoute.config,
+            ...route.config
+          };
+        }
+
         return preparedRoute;
       });
 
