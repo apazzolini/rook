@@ -75,6 +75,14 @@ module.exports = {
     // and should be served in the vendor bundle.
     vendorLibraries: null,
 
+    // If true, will print out the various library files loaded into the 
+    // production bundle.
+    showBuildChunks: false,
+
+    // If true, will stop the invocation of `npm run build` if a warning is 
+    // thrown.
+    haltBuildOnWarnings: false,
+
     // Webpack configuration customizations. Please see the webpack docs.
     config: {
       // Webpack devtool configuration

@@ -28,6 +28,7 @@
     "compile": "babel --presets es2015,stage-0,react --plugins transform-runtime src/ --out-dir lib/",
     "dev": "./dev-scripts/copy-to-app.sh",
     "lint": "./node_modules/.bin/eslint -c .eslintrc src bin config",
+    "test": "mocha --colors --compilers js:babel-core/register --recursive ./src/**/*.test.js --ignore ./lib/**/*.test.js",
     "prepublish": "npm run compile"
   },
   "dependencies": {

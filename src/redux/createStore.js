@@ -3,20 +3,15 @@ import { syncHistory } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { applyMiddleware, createStore } from 'redux';
 
-import Immutable from 'immutable';
-import { createReducer as createImmutableReducer } from 'redux-immutablejs';
 import { combineReducers } from 'redux';
 import { routeReducer } from 'react-router-redux';
 
 import apiRequestMiddleware from './middleware/ApiRequest/apiRequest';
 import * as apiLoadingReducer from './modules/api';
+import createReducer from './createReducer';
 
 // explicit path required for HMR to function. see #7
 import reducers from '../../../../src/redux/modules';
-
-export function createReducer(reducer) {
-  return createImmutableReducer(Immutable.fromJS(reducer.initialState), reducer.reducers);
-}
 
 function createRootReducer(reducers) {
   const rootReducer = {
@@ -64,11 +59,8 @@ export default function create(apiClient, providedMiddleware, history, data) {
     const devtools = require('../client/devtools');
 
     finalCreateStore = devtools.compose(middleware)(createStore);
-    
   } else {
-
     finalCreateStore = applyMiddleware(...middleware)(createStore);
-
   }
 
   const store = finalCreateStore(rootReducer, data);

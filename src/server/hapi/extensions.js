@@ -8,5 +8,4 @@ export default (server, config) => {
     const extension = require(extensionFile).default;
     extension(server, config);
   });
-
 };

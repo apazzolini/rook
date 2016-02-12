@@ -21,7 +21,7 @@ webpack(webpackConfig, (err, stats) => {
     version: true,
     timings: true,
     assets: true,
-    chunks: false,
+    chunks: config.webpack.showBuildChunks,
     colors: true
   };
 
@@ -30,11 +30,15 @@ webpack(webpackConfig, (err, stats) => {
   if (jsonStats.errors.length > 0) {
     console.log('Webpack had errors.');
     options.errors = true;
-    // TODO: Halt the build here
+    throw new Error(jsonStats.errors);
   }
+
   if (jsonStats.warnings.length > 0) {
     console.log('Webpack had warnings.');
     options.warnings = true;
+    if (config.webpack.haltBuildOnWarnings) {
+      throw new Error(jsonStats.warnings);
+    }
   }
 
   console.log('Webpack compile was successful.');
