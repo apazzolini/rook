@@ -73,7 +73,7 @@ module.exports = {
     module: {
       loaders: [
         { test: /\.css$/, loader: 'style!css' },
-        { test: /\.scss$/, loader: 'style-loader!css-loader!postcss-loader' }
+        { test: /\.pcss$/, loader: 'style-loader!css-loader!postcss-loader' }
       ]
     },
     plugins: [
@@ -99,7 +99,7 @@ module.exports = {
     module: {
       loaders: [
         { test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css') },
-        { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader') }
+        { test: /\.pcss$/, loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader') }
       ]
     },
     plugins: [
