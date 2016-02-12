@@ -2,6 +2,7 @@ import path from 'path';
 import { match } from 'react-router';
 import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 import Boom from 'boom';
+import lodash from 'lodash';
 
 import createStore from '../redux/createStore';
 import html from './html';
@@ -65,13 +66,19 @@ export default () => {
               store.getState, store.dispatch,
               renderProps.location,
               renderProps.params
-            ).then((action) => {
-              let httpStatus;
-              if (action.length && action[0].statusCode) {
-                httpStatus = action[0].statusCode;
-              } else {
-                httpStatus = getRouteHttpStatus(renderProps.routes) || 200;
-              }
+            ).then((actions) => {
+              let httpStatus = 0;
+              lodash.each(lodash.flattenDeep(actions), (action) => {
+                if (action.statusCode >= 500) {
+                  reply(Boom.wrap(new Error(action.error)));
+                }
+
+                if (action.statusCode && action.statusCode > httpStatus) {
+                  httpStatus = action.statusCode;
+                }
+              });
+
+              httpStatus = httpStatus || getRouteHttpStatus(renderProps.routes) || 200;
 
               const component = rootComponent.createForServer(store, renderProps);
               reply(html(config, tools.assets(), store, null, component)).code(httpStatus);
