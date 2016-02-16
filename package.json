@@ -3,7 +3,7 @@
   "description": "Opinionated React/Redux/Hapi universal framework",
   "author": "Andre Azzolini <apazzolini@gmail.com> (http://github.com/apazzolini)",
   "license": "MIT",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/apazzolini/rook.git"
