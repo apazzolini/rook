@@ -10,9 +10,15 @@ Rook's goal is to solve this for you by:
 - Providing patterns and structure for typical tasks, such as data fetching
 - Exposing direct access to the underlying components when necessary
 
+## Docs
+
+Although you can read the docs directly on the GitHub repository, the generated GitBook is much easier to navigate.
+
+You can find the docs at http://apazzolini.github.io/rook/
+
 ## Getting Started
 
-The easiest way to learn Rook is to jump in and [get started.](docs/introduction/getting-started.md) However, you should be at least a little bit familiar with the below libraries.
+The easiest way to learn Rook is to jump in and [get started.](http://apazzolini.github.io/rook/docs/introduction/getting-started.html) However, you should be at least a little bit familiar with the below libraries.
 
 ## Components 
 
