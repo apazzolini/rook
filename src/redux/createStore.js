@@ -16,7 +16,7 @@ import reducers from '../../../../src/redux/modules';
 function createRootReducer(reducers) {
   const rootReducer = {
     routing: routeReducer,
-    apiLoading: createReducer(apiLoadingReducer)
+    apiRequest: createReducer(apiLoadingReducer)
   };
 
   for (let [k, v] of Object.entries(reducers)) {

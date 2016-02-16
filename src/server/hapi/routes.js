@@ -42,7 +42,6 @@ export default (config) => {
           return await getTryCatchWrappedHandler(route.handler)(request, reply);
         };
 
-        // TODO: This needs to be expanded to capture all Hapi properties
         const preparedRoute = {
           path: route.path,
           method: route.method,
