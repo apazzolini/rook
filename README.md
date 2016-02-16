@@ -12,7 +12,7 @@ Rook's goal is to solve this for you by:
 
 ## Getting Started
 
-The easiest way to learn Rook is to jump in [get started.](docs/introduction/getting-started.md) However, you should be at least a little bit familiar with the below libraries.
+The easiest way to learn Rook is to jump in and [get started.](docs/introduction/getting-started.md) However, you should be at least a little bit familiar with the below libraries.
 
 ## Components 
 

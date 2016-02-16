@@ -29,7 +29,12 @@
     "dev": "./dev-scripts/copy-to-app.sh",
     "lint": "./node_modules/.bin/eslint -c .eslintrc src bin config",
     "test": "mocha --colors --compilers js:babel-core/register --recursive ./src/**/*.test.js --ignore ./lib/**/*.test.js",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "docs:clean": "rimraf _book",
+    "docs:prepare": "gitbook install",
+    "docs:build": "npm run docs:prepare && gitbook build -g apazzolini/rook",
+    "docs:watch": "npm run docs:prepare && gitbook serve",
+    "docs:publish": "npm run docs:clean && npm run docs:build && cd _book && git init && git commit --allow-empty -m 'Generate book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'Generate book' && git push git@github.com:apazzolini/rook gh-pages --force"
   },
   "dependencies": {
     "autoprefixer": "~6.3",
@@ -98,7 +103,10 @@
     "webpack-hot-middleware": "~2.7",
     "webpack-isomorphic-tools": "~2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gitbook-cli": "^1.0.1",
+    "rimraf": "^2.5.2"
+  },
   "peerDependencies": {
     "hapi": "~13.0",
     "react": "~0.14",
