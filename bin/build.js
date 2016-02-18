@@ -25,7 +25,6 @@ webpack(webpackConfig, (err, stats) => {
     colors: true
   };
 
-
   const jsonStats = stats.toJson();
   if (jsonStats.errors.length > 0) {
     console.log('Webpack had errors.');

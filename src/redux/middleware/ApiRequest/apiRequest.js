@@ -26,7 +26,7 @@ export default function (api) {
     // Immediately dispatch the REQUEST action.
     next({ ...rest, type: REQUEST });
 
-    // Dispatch the API_LOADING_START action
+    // Dispatch the apiLoadingStart action
     next({ type: '@@rook/apiLoadingStart' });
 
     // Execute the API request and dispatch the OK or FAIL action type

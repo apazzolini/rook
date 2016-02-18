@@ -54,7 +54,7 @@ Testing is important. Testing can also be annoying. Rook comes preconfigured to 
 
 Towards the end of 2015, I decided to learn React and started on a long journey through READMEs, blogs, and tutorials. After developing a basic idea of the libraries I wanted to combine, I started building my [personal website](https://azzolini.io). It's certainly over-engineered, but it was a great learning experience.
 
-When I was nearly finished, a slew of JavaScript fatigue articles began popping up, and they're not wrong. I realized I could extract a framework out of my experience, and created Rook. This project is my attempt at simplifying modern JS dev for newcomers. 
+When I was nearly finished, a slew of JavaScript fatigue articles began popping up, and they're not wrong. I realized I could extract a framework out of my experience, and created Rook. This project is an attempt at simplifying modern JS development.
 
 ## Acknowledgements
 
