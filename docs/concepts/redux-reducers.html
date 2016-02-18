@@ -1,0 +1,556 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Redux Reducers | Rook</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.4.3">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-prism/prism.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../docs/concepts/react-views.html" />
+    
+    
+    <link rel="prev" href="../../docs/concepts/api-server.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="2.2" data-basepath="../.." data-revision="Wed Feb 17 2016 21:47:15 GMT-0600 (CST)">
+    
+
+<div class="book-summary">
+    <div class="book-search" role="search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Read Me
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="docs/introduction/index.html">
+            
+                
+                    <a href="../../docs/introduction/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Introduction
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="docs/introduction/getting-started.html">
+            
+                
+                    <a href="../../docs/introduction/getting-started.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Getting Started
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="docs/introduction/project-structure.html">
+            
+                
+                    <a href="../../docs/introduction/project-structure.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Project Structure
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+            <span><b>1.3.</b> Production Considerations</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="docs/concepts/index.html">
+            
+                
+                    <a href="../../docs/concepts/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Concepts
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="docs/concepts/api-server.html">
+            
+                
+                    <a href="../../docs/concepts/api-server.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        API Server
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2" data-path="docs/concepts/redux-reducers.html">
+            
+                
+                    <a href="../../docs/concepts/redux-reducers.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Redux Reducers
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="docs/concepts/react-views.html">
+            
+                
+                    <a href="../../docs/concepts/react-views.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        React Views
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="docs/concepts/data-fetching.html">
+            
+                
+                    <a href="../../docs/concepts/data-fetching.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Data Fetching
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="docs/concepts/configuration.html">
+            
+                
+                    <a href="../../docs/concepts/configuration.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        Configuration
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="docs/advanced/index.html">
+            
+                
+                    <a href="../../docs/advanced/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Advanced
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="docs/advanced/client-server-code.html">
+            
+                
+                    <a href="../../docs/advanced/client-server-code.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Client/Server Specific Code
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+            <span><b>3.2.</b> Rook Configuration</span>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >Rook</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="redux-reducers">Redux Reducers</h2>
+<p>Your Redux store is the source of record for the current application state. It is a serializable authority of how to render your site.</p>
+<p>Learning Redux is a task in and of itself. This section will be intimidating if you have no Redux knowledge. The <a href="https://egghead.io/series/getting-started-with-redux" target="_blank">egghead.io Redux course</a> as well as the <a href="http://redux.js.org/" target="_blank">official Redux documentation</a> are excellent resources. </p>
+<p>Let&apos;s see how Rook uses Redux.</p>
+<h3 id="base-redux-store">Base Redux store</h3>
+<p>A base Rook Redux store looks like this:</p>
+<pre><code>{
+  routing: [The structure from react-router-redux],
+
+  apiRequest: {
+    loading: Boolean,
+    loadError: {
+      msg: String,
+      stack: String
+    }
+  },
+
+  ... your state
+}
+</code></pre><p>Both <code>apiRequest</code> and each node of your custom state is actually an Immutable.js object. </p>
+<blockquote>
+<p>Note: Third party reducers are not necessarily Immutable.js capable - this is why the entirety of the store is not wrapped.</p>
+</blockquote>
+<h3 id="adding-your-state-reducers">Adding your state / reducers</h3>
+<p>The first thing you&apos;ll do when adding new state to your application is create a Redux module. This is a term we&apos;re introducing in Rook. Each module handles one object tree from the root state (shown above) and has two parts: the initial state and the reducer itself.</p>
+<p>To better explain these parts, we&apos;ll look at <a href="https://github.com/apazzolini/rook-starter/blob/master/src%2Fredux%2Fmodules%2Frandom.js" target="_blank">the random.js module</a> from rook-starter.</p>
+<h3 id="initial-state">Initial state</h3>
+<pre><code class="lang-js"><span class="token keyword">export</span> <span class="token keyword">const</span> initialState <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The initial state is not very glamorous. It (optionally) contains the initial structure of your object state tree. For simplicity, you define it as a simple JS object. When Rook registers the module, it will convert it to an Immutable.js object for you.</p>
+<h3 id="reducers">Reducers</h3>
+<pre><code class="lang-js">
+<span class="token keyword">export</span> <span class="token keyword">const</span> reducers <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+  <span class="token string">&apos;random/load&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> action<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> state<span class="token punctuation">,</span>
+
+  <span class="token string">&apos;random/loadOk&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> action<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> state<span class="token punctuation">.</span><span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>action<span class="token punctuation">.</span>result<span class="token punctuation">,</span>
+    loadedOnServer<span class="token punctuation">:</span> action<span class="token punctuation">.</span>isOnServer
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+  <span class="token string">&apos;random/loadFail&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> action<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> state
+
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The bread and butter of how to manage your application state. You&apos;ll want to get familiar with the <a href="https://facebook.github.io/immutable-js/docs/#/Map" target="_blank">Immutable.js map docs</a> as the majority of your reducer changes will use these methods.</p>
+<p>Let&apos;s dissect the above example. The <code>random/load</code> and <code>random/loadFail</code> reducers simply return the state unchanged. Rook provides a global loading flag that is enough for rook-starter. If you&apos;d like to track individual loading events, this might be a good place for it.</p>
+<blockquote>
+<p>Note: We&apos;ll cover the entirety of asynchronous data fetching in <a href="data-fetching.html">a subsequent section</a>.</p>
+</blockquote>
+<p>The <code>random/loadOk</code> reducer is more interesting. We&apos;re merging in the properties that live inside of the <code>action.result</code> object. For example, if our initial state is:</p>
+<pre><code class="lang-js"><span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<p>and the dispatched action is:</p>
+<pre><code class="lang-js"><span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">&apos;random/loadOk&apos;</span><span class="token punctuation">,</span>
+  isOnServer<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+  result<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    number<span class="token punctuation">:</span> <span class="token number">0.73</span><span class="token punctuation">,</span>
+    time<span class="token punctuation">:</span> <span class="token string">&apos;2016/01/01&apos;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>our resulting state (<strong>for this specific object tree</strong>) would be: </p>
+<pre><code class="lang-js"><span class="token punctuation">{</span>
+  number<span class="token punctuation">:</span> <span class="token number">0.73</span><span class="token punctuation">,</span>
+  time<span class="token punctuation">:</span> <span class="token string">&apos;2016/01/01&apos;</span><span class="token punctuation">,</span>
+  loadedOnServer<span class="token punctuation">:</span> <span class="token keyword">false</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In rook-starter, the random module is mounted under the <code>random</code> node. Therefore, our global application state would be:</p>
+<pre><code class="lang-js"><span class="token punctuation">{</span>
+  routing<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">// [The structure from react-router-redux],</span>
+
+  apiRequest<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">// [Rook&apos;s apiRequest structure],</span>
+
+  random<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    number<span class="token punctuation">:</span> <span class="token number">0.73</span><span class="token punctuation">,</span>
+    time<span class="token punctuation">:</span> <span class="token string">&apos;2016/01/01&apos;</span><span class="token punctuation">,</span>
+    loadedOnServer<span class="token punctuation">:</span> <span class="token keyword">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>There is a common misconception that actions and reducers are 1:1. This is not the case, and different reducers may certainly handle the same action, provided they are different modules. Let&apos;s look at an example. If we also had a <code>clientRequestCounter</code> module (<a href="https://github.com/apazzolini/rook-starter/blob/master/src%2Fredux%2Fmodules%2FclientRequestCounter.js" target="_blank">like we do in rook-starter</a>) that looked like this:</p>
+<pre><code class="lang-js"><span class="token keyword">export</span> <span class="token keyword">const</span> initialState <span class="token operator">=</span> <span class="token punctuation">{</span>
+  count<span class="token punctuation">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> reducers <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+  <span class="token string">&apos;random/loadOk&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> action<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>isOnServer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> state<span class="token punctuation">.</span><span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      count<span class="token punctuation">:</span> state<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&apos;count&apos;</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>then our global state after the dispatched action would be:</p>
+<pre><code class="lang-js"><span class="token punctuation">{</span>
+  routing<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">// [The structure from react-router-redux],</span>
+
+  apiRequest<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">// [Rook&apos;s apiRequest structure],</span>
+
+  random<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    number<span class="token punctuation">:</span> <span class="token number">0.73</span><span class="token punctuation">,</span>
+    time<span class="token punctuation">:</span> <span class="token string">&apos;2016/01/01&apos;</span><span class="token punctuation">,</span>
+    loadedOnServer<span class="token punctuation">:</span> <span class="token keyword">false</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  clientRequestCounter<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    count<span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Note that we have two different reducers (in two different modules) that both handle the &apos;random/loadOk&apos; action.</p>
+<h3 id="action-creators">Action creators</h3>
+<p>The suggested place to store action creators is in the <code>/src/redux/actions/</code> directory. Action creators are simply functions that return JS objects. These objects must include a <code>type</code> property - the rest is up to you. As an example, let&apos;s take a look at an action creator that <em>could</em> have been used in the above example:</p>
+<pre><code class="lang-js">loadSpecificRandom<span class="token punctuation">:</span> <span class="token punctuation">(</span>someNumber<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">&apos;random/loadOk&apos;</span><span class="token punctuation">,</span>
+  loadedOnServer<span class="token punctuation">:</span> <span class="token keyword">false</span><span class="token punctuation">,</span>
+  result<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    number<span class="token punctuation">:</span> someNumber<span class="token punctuation">,</span>
+    time<span class="token punctuation">:</span> <span class="token string">&apos;2016/01/01&apos;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>which might have been dispatched by:</p>
+<pre><code class="lang-js"><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">loadSpecificRandom</span><span class="token punctuation">(</span><span class="token number">0.73</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>This is a contrived example to explain that each individual reducer function (like <code>random/loadOk</code>) operates independently. Rook adds a special mechanism for triggering API fetches, which we will see later. The gist of it is that dispatching an action with an <code>apiRequest</code> will trigger the initial reducer immediately, followed by <code>${type}Ok</code> or <code>${type}Fail</code> in the future.</p>
+<h3 id="combining-multiple-modules">Combining multiple modules</h3>
+<p>The <code>index.js</code> file in the <code>/src/redux/modules/</code> directory describes how to build the full state tree (minus the built-in Rook parts) in the default export object. When Rook loads these, each module&apos;s initial state will be converted to an Immutable.js representation.</p>
+<h3 id="dynamic-initial-state">Dynamic initial state</h3>
+<p>You might need to set the initial Redux state dynamically during server rendering. For example, you may wish to populate a user&apos;s name or permission flags. Rook provides a hook for this. In <code>/src/redux/modules/index.js</code>, you may export a function named <code>updateInitialServerState</code>. This function should take two parameters, <code>request</code> and <code>initialState</code>, and modify the initialState as appropriate.</p>
+<h3 id="testing">Testing</h3>
+<p>Redux reducers are pure functions, which makes them super easy to test. Also, since reducers are synchronous, you test your reducer tier separately from your API tier. I grew to love this separation of concerns and think you will too.</p>
+<p>The test is pretty self-explanatory honestly. You should just take a look at <a href="https://github.com/apazzolini/rook-starter/blob/master/src%2Fredux%2F__tests__%2Frandom.test.js" target="_blank">random.test.js</a> from rook-starter.</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>Learn about tying your application state to the React views <a href="react-views.html">in the next section</a>.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../docs/concepts/api-server.html" class="navigation navigation-prev " aria-label="Previous page: API Server"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../docs/concepts/react-views.html" class="navigation navigation-next " aria-label="Next page: React Views"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-github/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"github":{"url":"https://github.com/apazzolini/rook/"}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
