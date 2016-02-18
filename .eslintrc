@@ -3,13 +3,11 @@
   "env": {
     mocha: true
   },
-  "ecmaFeatures": {
-    "jsx": false
-  },
   "rules": {
     "babel/object-curly-spacing": [2, "always"],
     "object-curly-spacing": 0,
     "react/jsx-uses-react": [2, {"pragma": "React"}],
+    "react/prop-types": 2,
     "array-bracket-spacing": [2, "never"],
     "new-cap": 0,
     "no-alert": 0,
@@ -29,7 +27,6 @@
     "__LOGGER__": false,
     "__DISABLE_SSR__": true,
     "__DEVTOOLS__": true,
-    "__DEVTOOLS_IS_VISIBLE__": true,
-    "webpackIsomorphicTools": true
+    "__DEVTOOLS_IS_VISIBLE__": true
   }
 }
