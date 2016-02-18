@@ -12,4 +12,5 @@
   * [Data Fetching](/docs/concepts/data-fetching.md)
   * [Configuration](/docs/concepts/configuration.md)
 * [Advanced](/docs/advanced/README.md)
+  * [Client/Server Specific Code](/docs/advanced/client-server-code.md)
   * Rook Configuration

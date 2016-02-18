@@ -32,7 +32,7 @@ Both `apiRequest` and each node of your custom state is actually an Immutable.js
 
 ### Adding your state / reducers
 
-The first thing you'll do when adding new state to your application is create a Redux module. This is a term we're introducing in Rook. Each module handles one object tree from the root state (shown above) and has four parts: the initial state, the reducer itself, action creators, and selectors.
+The first thing you'll do when adding new state to your application is create a Redux module. This is a term we're introducing in Rook. Each module handles one object tree from the root state (shown above) and has two parts: the initial state and the reducer itself.
 
 To better explain these parts, we'll look at [the random.js module](https://github.com/apazzolini/rook-starter/blob/master/src%2Fredux%2Fmodules%2Frandom.js) from rook-starter.
 
@@ -53,7 +53,8 @@ export const reducers = {
   'random/load': (state, action) => state,
 
   'random/loadOk': (state, action) => state.merge({
-    ...action.result
+    ...action.result,
+    loadedOnServer: action.isOnServer
   }),
 
   'random/loadFail': (state, action) => state
@@ -73,11 +74,12 @@ The `random/loadOk` reducer is more interesting. We're merging in the properties
 {}
 ```
 
-and `action` is:
+and the dispatched action is:
 
 ```js
 {
   type: 'random/loadOk',
+  isOnServer: true,
   result: {
     number: 0.73,
     time: '2016/01/01'
@@ -90,7 +92,8 @@ our resulting state (**for this specific object tree**) would be:
 ```js
 {
   number: 0.73,
-  time: '2016/01/01'
+  time: '2016/01/01',
+  loadedOnServer: false
 }
 ```
 
@@ -104,20 +107,64 @@ In rook-starter, the random module is mounted under the `random` node. Therefore
   
   random: {
     number: 0.73,
-    time: '2016/01/01'
+    time: '2016/01/01',
+    loadedOnServer: false
   }
 }
 ```
 
-This is the entirety of the dynamic information necessary to render rook-starter.
+There is a common misconception that actions and reducers are 1:1. This is not the case, and different reducers may certainly handle the same action, provided they are different modules. Let's look at an example. If we also had a `clientRequestCounter` module ([like we do in rook-starter](https://github.com/apazzolini/rook-starter/blob/master/src%2Fredux%2Fmodules%2FclientRequestCounter.js)) that looked like this:
+
+```js
+export const initialState = {
+  count: 0
+};
+
+export const reducers = {
+
+  'random/loadOk': (state, action) => {
+    if (action.isOnServer) {
+      return state;
+    }
+
+    return state.merge({
+      count: state.get('count') + 1
+    });
+  }
+
+};
+```
+
+then our global state after the dispatched action would be:
+
+```js
+{
+  routing: ... // [The structure from react-router-redux],
+  
+  apiRequest: ... // [Rook's apiRequest structure],
+  
+  random: {
+    number: 0.73,
+    time: '2016/01/01',
+    loadedOnServer: false
+  },
+
+  clientRequestCounter: {
+    count: 1
+  }
+}
+```
+
+Note that we have two different reducers (in two different modules) that both handle the 'random/loadOk' action.
 
 ### Action creators
 
-Action creators are functions that return JS objects. These objects must include a `type` property. The rest is up to you. As an example, let's take a look at an action creator that *could* have been used in the above example:
+The suggested place to store action creators is in the `/src/redux/actions/` directory. Action creators are simply functions that return JS objects. These objects must include a `type` property - the rest is up to you. As an example, let's take a look at an action creator that *could* have been used in the above example:
 
 ```js
 loadSpecificRandom: (someNumber) => ({
   type: 'random/loadOk',
+  loadedOnServer: false,
   result: {
     number: someNumber,
     time: '2016/01/01'
@@ -132,20 +179,6 @@ dispatch(loadSpecificRandom(0.73));
 ```
 
 This is a contrived example to explain that each individual reducer function (like `random/loadOk`) operates independently. Rook adds a special mechanism for triggering API fetches, which we will see later. The gist of it is that dispatching an action with an `apiRequest` will trigger the initial reducer immediately, followed by `${type}Ok` or `${type}Fail` in the future.
-
-### Selectors
-
-You will sometimes have a need for inspecting a specific part of the state tree. This normally happens in `fetchData` methods (covered later) when you have the global state. Selectors typically look like this:
-
-```js
-export const selectors = {
-
-  currentNumber: (globalState) => globalState.random.get('number')
-
-};
-```
-
-> The `.get()` call here is invoking Immutable.js. Remember that `random` in the state tree is an Immutable.js object.
 
 ### Combining multiple modules
 

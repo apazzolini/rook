@@ -9,7 +9,8 @@ You will always perform API requests  when dispatching Redux actions. They will 
 ```js
 loadNewRandom: () => ({
   type: 'random/load',
-  apiRequest: (api) => api.get(`/random`)
+  apiRequest: (api) => api.get(`/random`),
+  isOnServer: __SERVER__
 })
 ```
 
@@ -65,8 +66,9 @@ It's achieved with a static `fetchData` method defined in your React components.
 
 ```js
 static fetchData(getState, dispatch, location, params) {
-  if (!Random.selectors.currentNumber(getState())) {
-    return dispatch(Random.actions.loadNewRandom());
+  // Require a random number to be generated before rendering this component
+  if (!getState().random.get('number')) {
+    return dispatch(Actions.random.loadNewRandom());
   }
 }
 ```

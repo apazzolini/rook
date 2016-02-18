@@ -46,7 +46,7 @@ There are a few things happening here:
 Next, we might need to dispatch actions to modify the state:
 
 ```js
-import * as Random from '../../redux/modules/random';
+import * as Actions from '../../redux/actions';
 
 export class Home extends Component {
   static propTypes = {
@@ -55,7 +55,7 @@ export class Home extends Component {
 
   loadNewRandom = (e) => {
     e.preventDefault();
-    this.props.dispatch(Random.actions.loadNewRandom());
+    this.props.dispatch(Actions.random.loadNewRandom());
   };
 
   render() {
@@ -66,7 +66,7 @@ export class Home extends Component {
 }
 ```
 
-This is a common pattern for interacting with Redux. We create a new action from our `Random.actions.loadNewRandom()` action creator and dispatch it to the Redux store.
+This is a common pattern for interacting with Redux. We create a new action from our `Actions.random.loadNewRandom()` action creator and dispatch it to the Redux store.
 
 ### Inline-styles
 
